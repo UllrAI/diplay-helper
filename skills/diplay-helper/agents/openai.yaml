@@ -1,0 +1,4 @@
+interface:
+  display_name: "DiPlay Helper"
+  short_description: "Choose, download, install and troubleshoot DiPlay"
+  default_prompt: "Use $diplay-helper to help me set up DiPlay on my head unit or troubleshoot my current issue."
