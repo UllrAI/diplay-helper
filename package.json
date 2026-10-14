@@ -18,9 +18,14 @@
     "type": "git",
     "url": "git+https://github.com/UllrAI/diplay-helper.git"
   },
-  "keywords": [],
+  "keywords": [
+    "agent-skills",
+    "mcp",
+    "diplay",
+    "carplay"
+  ],
   "author": "",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "type": "module",
   "bugs": {
     "url": "https://github.com/UllrAI/diplay-helper/issues"

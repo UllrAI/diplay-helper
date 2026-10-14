@@ -6,7 +6,7 @@
 
 我们在查找 DiPlay 版本和使用信息时，发现了 **diplay.org** 这个社区资料站。它整理了原作者版本、第三方适配项目、兼容性反馈、下载信息和安装排错指引。于是我们做了 **DiPlay Helper**，让 AI 助手更方便地利用这些资料：用户描述自己的车机或当前问题，助手读取相关的最新文档，再帮助用户完成下一步。
 
-> **私有预览：**仓库目前保留在 UllrAI 下，等待 review。尚未发布公开可安装的 Skill 或公网 MCP 服务。
+> **MIT 开源。** Skill 可以独立安装，也可以自行运行可选的 MCP。目前不提供托管 MCP 服务。
 
 [![diplay.org 的第三方版本目录](docs/images/diplay-catalog-zh.jpg)](https://diplay.org/zh/community/)
 
@@ -43,13 +43,15 @@ Skill 从 [该站点的 LLM 指引](https://diplay.org/llm-guide.md) 开始，�
 
 技能名称为 `diplay-helper`，展示名为 **DiPlay Helper**。完整指引位于 [`skills/diplay-helper/SKILL.md`](skills/diplay-helper/SKILL.md)。
 
-私有 review 阶段可以这样使用：
+使用 [Skills CLI](https://github.com/vercel-labs/skills) 安装：
 
-1. 使用有权限的 GitHub 账号取得这个仓库。
-2. 将 `skills/diplay-helper` 放到 AI 客户端支持的技能目录。Codex 对应 `~/.codex/skills/diplay-helper`；替换已有安装前先检查。
-3. 在具备联网读取能力的客户端中开启新会话，使用 `$diplay-helper`，描述真实车机或当前问题。
+```sh
+npx skills add UllrAI/diplay-helper --skill diplay-helper
+```
 
-MCP 是可选项。公开安装方式会在 review 和发布后补充。
+按提示选择你的 AI 客户端。在带浏览器或读取工具的新会话里，用 `$diplay-helper` 描述当前设备或问题即可。MCP 是可选项。
+
+也可以手动将 `skills/diplay-helper` 复制到客户端支持的 Skill 目录，覆盖已有安装前先检查。仓库的版本发布中同时提供 Skill ZIP。
 
 ## 可选的 MCP 工具
 
@@ -79,3 +81,7 @@ DiPlay Helper 是第三方资料与工作流程集成。DiPlay 各版本由对�
 - [Review 场景](docs/review.md) · [验证记录](docs/validation.md) · [发布步骤](docs/release.md)
 
 截图来源与可编辑示意图见[配图说明](docs/images/README.md)。
+
+## 许可证
+
+助手代码、Skill 指引和原创示意图使用 [MIT 许可证](LICENSE)。站点截图及引用的第三方资料保留原有权利和来源归属。

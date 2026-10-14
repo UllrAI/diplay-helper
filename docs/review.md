@@ -1,6 +1,6 @@
-# Private review
+# Behavior review
 
-This preview has not been deployed or publicly listed. Repository visibility remains private and npm publication is disabled with `private: true`. The owner decides when to open-source it and which license to use.
+The repository is public under MIT. The Skill is independent of MCP; the MCP can be run locally against the live source. No hosted endpoint or npm package is published. `private: true` disables accidental npm publication and does not describe GitHub visibility.
 
 ## Files to review
 

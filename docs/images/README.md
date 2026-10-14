@@ -10,3 +10,5 @@ The English and Chinese screenshots were captured from the public **diplay.org**
 | `how-it-works-zh.svg` / `.png` | Original Chinese diagram of the same flow |
 
 SVG sources stay editable; README files embed PNG exports for consistent display. Diagram arrows describe information flow, not automated APK installation or vehicle control. Site screenshots retain their original labels and are attributed next to each image.
+
+Original diagrams use the repository MIT License. Website screenshots and visible third-party content retain their original rights; the helper license does not relicense those sources.

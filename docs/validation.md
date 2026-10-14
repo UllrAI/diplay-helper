@@ -1,4 +1,8 @@
-# Private preview validation — 2026-10-14
+# Validation record
+
+## Private preview — 2026-10-14
+
+This section records the state before the owner approved publication.
 
 - Skill frontmatter/name validation passed using the bundled skill-creator validator. The packaged ZIP contains only `SKILL.md` and `agents/openai.yaml`; there is no data catalog, release snapshot or offline Markdown knowledge copy.
 - MCP TypeScript check and build passed. All 12 tests passed, including a real Streamable HTTP client connection, tool discovery, live guide results, mixed-revision handling, unavailable sources, minor-version/old-release boundaries, source-only projects and host/origin validation.

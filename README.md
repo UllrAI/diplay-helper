@@ -6,7 +6,7 @@ A third-party Skill and read-only MCP integration for finding, installing and tr
 
 We discovered **diplay.org** while looking for DiPlay versions and setup information. The community site brings together original releases, third-party adaptations, compatibility reports, download information and troubleshooting guides. We built **DiPlay Helper** to make that collection easier to use from an AI assistant: describe your head unit or the problem you are facing, and the assistant reads the relevant current documents to help with the next step.
 
-> **Private preview:** this repository remains private under UllrAI pending review. A public Skill release and hosted MCP endpoint have not been published.
+> **Open source · MIT.** Install the Skill independently, or run the optional MCP locally. A hosted MCP endpoint is not provided.
 
 [![The third-party version directory on diplay.org](docs/images/diplay-catalog-en.jpg)](https://diplay.org/community/?lang=en)
 
@@ -43,13 +43,15 @@ The optional MCP adds structured lookups and returns live package or topic Markd
 
 The Skill’s name is `diplay-helper`, displayed as **DiPlay Helper**. Its instructions are in [`skills/diplay-helper/SKILL.md`](skills/diplay-helper/SKILL.md).
 
-For private review:
+Install with the [Skills CLI](https://github.com/vercel-labs/skills):
 
-1. Obtain this repository with your authorized GitHub account.
-2. Copy `skills/diplay-helper` to the Skill directory supported by your agent. In Codex, use `~/.codex/skills/diplay-helper`; check before replacing an existing installation.
-3. Start a new conversation with a browsing/fetch-capable agent and ask `$diplay-helper` for help with your setup or current issue.
+```sh
+npx skills add UllrAI/diplay-helper --skill diplay-helper
+```
 
-MCP is optional. Public installation instructions will be added after review and release.
+Select your agent when prompted. Start a new conversation with browsing/fetch tools and ask `$diplay-helper` for help with your setup or current issue. MCP is optional.
+
+For manual installation, copy `skills/diplay-helper` into the Skill directory supported by your agent; check before replacing an existing installation. Tagged releases also include a Skill ZIP.
 
 ## Optional MCP tools
 
@@ -79,3 +81,7 @@ DiPlay Helper is a third-party information and workflow integration. DiPlay rele
 - [Review scenarios](docs/review.md) · [Validation record](docs/validation.md) · [Release procedure](docs/release.md)
 
 Screenshot sources and editable diagrams: [image notes](docs/images/README.md).
+
+## License
+
+The helper code, Skill instructions and original diagrams use the [MIT License](LICENSE). Website screenshots and cited third-party material retain their original rights and attribution.

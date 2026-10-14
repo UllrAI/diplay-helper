@@ -2,7 +2,7 @@
 
 DiPlay Helper reads Markdown and query data published by diplay.org. The Skill can use live Markdown directly; the MCP additionally requires the site’s `/api/ai/catalog.json` source contract.
 
-## Local review
+## Run the MCP locally
 
 Node 22.12+; Node 24 recommended.
 
@@ -16,37 +16,31 @@ npm run build
 npm run package:skill
 ```
 
-The website source PR must be built/deployed before its new catalog endpoint is available. For local review, build the website's review branch and run its preview, then point the MCP at that local origin:
-
-```sh
-# In the diplay.org checkout:
-npm run build
-npm run preview -- --host 127.0.0.1 --port 4332
-
-# In this checkout:
-DIPLAY_SITE_URL=http://127.0.0.1:4332 npm run verify:source
-DIPLAY_SITE_URL=http://127.0.0.1:4332 PORT=4333 npm start
-```
-
-The MCP endpoint is `http://127.0.0.1:4333/mcp`. `verify:source` reads every current package's actual Markdown and exercises all four tools against that source. Synthetic test fixtures remain in `tests/` and are never included in Skill ZIPs or the deployed server.
-
-If Astro reports that a preview is already running, reuse the printed origin instead of assuming the requested port started. Do not stop another user's preview process.
-
-For a local stdio client, build first, then configure its MCP server entry with your actual absolute path:
+After building, a stdio MCP client can start the server against `https://diplay.org`, the default live source. Replace the path with your actual checkout location:
 
 ```json
 {
   "mcpServers": {
     "diplay-helper": {
       "command": "node",
-      "args": ["/absolute/path/to/diplay-helper/dist/index.js", "--stdio"],
-      "env": { "DIPLAY_SITE_URL": "http://127.0.0.1:4332" }
+      "args": ["/absolute/path/to/diplay-helper/dist/index.js", "--stdio"]
     }
   }
 }
 ```
 
-No private repository URL is presented as a publicly installable package. After public release, publish the tested skill install command and the actual deployed HTTPS MCP URL.
+To check the live source and every tool, or run local HTTP:
+
+```sh
+npm run verify:source
+PORT=4333 npm start
+```
+
+The local HTTP endpoint is `http://127.0.0.1:4333/mcp`. `verify:source` reads every current package's actual Markdown and exercises all four tools against that source. Synthetic test fixtures remain in `tests/` and are never included in Skill ZIPs or the deployed server.
+
+For companion website development, build its review branch and start its preview. Point the helper to the actual printed origin using `DIPLAY_SITE_URL=http://127.0.0.1:4332`. If Astro reports an existing preview, reuse its origin; do not stop another user's process. This override also works in the stdio client's `env` configuration.
+
+No hosted MCP endpoint is provided. HTTP hosting is separate from installing this Skill or running the MCP locally.
 
 ## Server configuration
 
