@@ -1,110 +1,81 @@
 # DiPlay Helper
 
-DiPlay package selection, downloads, installation, connection and troubleshooting, guided by the live Markdown at [diplay.org](https://diplay.org/llm-guide.md).
+**English** · [简体中文](README.zh-CN.md)
 
-**Private review preview.** This repository is private under UllrAI. It has not been submitted to MCP Registry, skills.sh or a plugin directory. No public MCP endpoint or open-source license has been released. Make it public only after the owner's review.
+A third-party Skill and read-only MCP integration for finding, installing and troubleshooting DiPlay with information collected by [diplay.org](https://diplay.org/).
 
-## Skill
+We discovered **diplay.org** while looking for DiPlay versions and setup information. The community site brings together original releases, third-party adaptations, compatibility reports, download information and troubleshooting guides. We built **DiPlay Helper** to make that collection easier to use from an AI assistant: describe your head unit or the problem you are facing, and the assistant reads the relevant current documents to help with the next step.
 
-The skill is [`skills/diplay-helper/SKILL.md`](skills/diplay-helper/SKILL.md), displayed as **DiPlay Helper**. It replies in the user's language and covers more than version selection.
+> **Private preview:** this repository remains private under UllrAI pending review. A public Skill release and hosted MCP endpoint have not been published.
 
-It reads the live entry, selection, official release, chosen project, download and relevant troubleshooting Markdown. It contains no catalog JSON, fixed release list or offline knowledge snapshots. If required live documents cannot be read, it identifies the missing evidence instead of inventing a package or using stale bundled data. Existing documents may be reused within a conversation; package changes, source updates and requests for the latest information trigger a refresh.
+[![The third-party version directory on diplay.org](docs/images/diplay-catalog-en.jpg)](https://diplay.org/community/?lang=en)
 
-Use the skill with the agent's existing browser/fetch capabilities. MCP is optional. For private review, copy the `skills/diplay-helper` folder to the skill location your agent supports; in Codex this is `~/.codex/skills/diplay-helper`. Do not overwrite an existing local skill without checking it first. Start a new conversation and invoke `$diplay-helper`.
+*The version directory on diplay.org, captured on October 14, 2026. This is the source website; the helper is used through your AI assistant.*
 
-Examples:
+## What you can ask
 
-- “Help me choose DiPlay for my BYD. My actual head-unit Android version is 8.1 / API 27.”
-- “I already downloaded the APK; opening it says there was a problem parsing the package.”
-- “CarPlay connects, but Siri audio is broken. Help me troubleshoot the current package.”
-- “帮我给车机装 DiPlay；这是完整车型和系统信息。”
-
-The original distribution is preferred where accessible. Mainland China or slow GitHub access can use a verified same-package Quark mirror, with exact folder, filename, share URL and QR image. Mirror transfer and local download are separate steps.
-
-## MCP
-
-The MCP reads the website's build-generated `/api/ai/catalog.json` and fetches package/topic Markdown live. The catalog is generated from the site's existing reviewed data; this repository does not maintain or ship a second release database. Guide hashes detect catalog/document revision mismatches during updates. A mismatch refreshes once, then fails clearly; an expired cache is not used as an offline fallback.
-
-| Tool | Result |
+| Your task | How the helper assists |
 | --- | --- |
-| `find_candidates` | Current public APK candidates filtered by catalog brand/Android target tags, with explicit review requirements |
-| `get_package` | The current package record, exact known downloads/mirror, and its live Markdown body |
-| `search_compatibility` | Individual source reports, dates, evidence, exact supplied-field matches and related records |
-| `get_guide` | Live entry, selection, official, community, downloads, installation or troubleshooting Markdown |
+| Choose a package | Read current requirements, relevant adaptations and available compatibility evidence for your actual head unit |
+| Find a download | Locate the selected package’s original distribution or a verified mirror, with its exact filename and location |
+| Install or connect | Follow the relevant installation, USB or wireless instructions for the current setup |
+| Troubleshoot | Continue from the current error and attempted steps using the relevant installation or symptom guidance |
 
-`find_candidates` is a catalog filter, not an API/ABI eligibility engine. Official minimums and adaptation requirements must be read from the live package guides. Tags, source builds, old tests, sparse fields and brand matches do not prove current vehicle compatibility. The current original release uses package ID `official`; it is never automatically called compatible merely because it appears in results. Source-only and channel projects are excluded from APK candidate search, but remain accessible through the community guide and `get_package` with their distribution preserved.
+For example:
 
-Brand filters use the catalog labels (for example `BYD`, `Geely`, `LynkCo`, `Generic`). Compatibility model queries reuse the website's reviewed spelling aliases without merging variants or markets. All four tools are read-only and require no model API key. They do not upload logs, install APKs, control a vehicle or send messages.
+> “Help me choose DiPlay for my head unit. Its actual Android version is 8.1 / API 27.”
+>
+> “I already downloaded the APK, but opening it gives a parsing error. What should I check next?”
+>
+> “CarPlay connects, but Siri audio is broken. Help me troubleshoot my installed version.”
 
-### Local review
+## How it works
 
-Node 22.12+; Node 24 recommended.
+![DiPlay Helper reads live Markdown from diplay.org; optional MCP lookups support the Skill’s sourced answers](docs/images/how-it-works-en.png)
 
-```sh
-gh repo clone UllrAI/diplay-helper
-cd diplay-helper
-npm ci
-npm run check
-npm test
-npm run build
-npm run package:skill
-```
+The Skill starts with [the site’s LLM guide](https://diplay.org/llm-guide.md), then reads only the relevant selection, release, project, download or troubleshooting Markdown. It replies in the user’s language and can work with the assistant’s existing browsing or fetch tools.
 
-The website source PR must be built/deployed before its new catalog endpoint is available. For local review, build the website's review branch and run its preview, then point the MCP at that local origin:
+**The knowledge comes from live documents.** The Skill ships instructions rather than a fixed release list or offline knowledge snapshot. Within a conversation it can reuse documents already read, refreshing when the selected package changes, sources change, or the user requests the latest information. If required documents are unavailable, it explains which facts could not be verified.
 
-```sh
-# In the diplay.org checkout:
-npm run build
-npm run preview -- --host 127.0.0.1 --port 4332
+The optional MCP adds structured lookups and returns live package or topic Markdown. It checks document hashes against the site’s catalog revision so an update cannot silently combine a new guide with old package information.
 
-# In this checkout:
-DIPLAY_SITE_URL=http://127.0.0.1:4332 npm run verify:source
-DIPLAY_SITE_URL=http://127.0.0.1:4332 PORT=4333 npm start
-```
+## Use the Skill
 
-The MCP endpoint is `http://127.0.0.1:4333/mcp`. `verify:source` reads every current package's actual Markdown and exercises all four tools against that source. Synthetic test fixtures remain in `tests/` and are never included in Skill ZIPs or the deployed server.
+The Skill’s name is `diplay-helper`, displayed as **DiPlay Helper**. Its instructions are in [`skills/diplay-helper/SKILL.md`](skills/diplay-helper/SKILL.md).
 
-If Astro reports that a preview is already running, reuse the printed origin instead of assuming the requested port started. Do not stop another user's preview process.
+For private review:
 
-For a local stdio client, build first, then configure its MCP server entry with your actual absolute path:
+1. Obtain this repository with your authorized GitHub account.
+2. Copy `skills/diplay-helper` to the Skill directory supported by your agent. In Codex, use `~/.codex/skills/diplay-helper`; check before replacing an existing installation.
+3. Start a new conversation with a browsing/fetch-capable agent and ask `$diplay-helper` for help with your setup or current issue.
 
-```json
-{
-  "mcpServers": {
-    "diplay-helper": {
-      "command": "node",
-      "args": ["/absolute/path/to/diplay-helper/dist/index.js", "--stdio"],
-      "env": { "DIPLAY_SITE_URL": "http://127.0.0.1:4332" }
-    }
-  }
-}
-```
+MCP is optional. Public installation instructions will be added after review and release.
 
-No private repository URL is presented as a publicly installable package. After public release, publish the tested skill install command and the actual deployed HTTPS MCP URL.
+## Optional MCP tools
 
-### Server configuration
+| Tool | What it returns |
+| --- | --- |
+| `find_candidates` | Public APK candidates filtered by catalog brand and Android target tags, plus the guides required before recommending one |
+| `get_package` | Current package details, known exact downloads and mirror identity, and the live package Markdown |
+| `search_compatibility` | Individual source reports with their tested setup, version, dates and evidence level |
+| `get_guide` | Live entry, selection, official release, community, download, installation or troubleshooting Markdown |
 
-| Variable | Default | Purpose |
-| --- | --- | --- |
-| `DIPLAY_SITE_URL` | `https://diplay.org` | Maintained website origin; HTTP is permitted only on loopback for review |
-| `HOST` | `127.0.0.1` | Listener address; Docker uses `0.0.0.0` |
-| `PORT` | `8080` | HTTP port |
-| `MCP_PUBLIC_URL` | `http://127.0.0.1:PORT` | Canonical public origin; set the real HTTPS origin when deploying behind a proxy |
+The server supports HTTP and stdio. It reads the query catalog published by diplay.org and the live Markdown linked from it. Node.js setup, source prerequisites and client configuration are in [the development guide](docs/development.md).
 
-HTTP requests validate the public Host and any Origin header. Preserve the public Host when proxying. The entrypoint handles current and 2025-era MCP clients using the official SDK. stdio uses the same tools and source client.
+## Sources and practical limits
 
-- `/healthz`: process liveness; does not imply the data source is ready.
-- `/readyz`: validates availability of the maintained catalog and reports its revision/dates.
-- `/metrics`: aggregate success/error counts by tool only; no query text, vehicle details, IPs or user identifiers. Counters reset on process restart; scrape them into the deployment's monitoring system if durable totals are needed.
+Keep the package, firmware, Android/API and CPU architecture specific. Catalog tags help locate candidates; installation requirements and vehicle compatibility must be checked against the actual documents and reports. Downloading, installing, connecting CarPlay and having working audio or calls are separate outcomes. Older or related reports retain their original scope.
 
-The Dockerfile builds a standalone server. It adds no GitHub Actions workflow. TLS, request-rate protection and readiness monitoring belong in the deployment/proxy configuration before opening the endpoint to the public.
+Downloads follow the user’s actual access. Prefer the original project distribution where accessible. For mainland China or unreliable GitHub access, offer a verified copy of the same package when available, preserving its exact mirror folder and filename. Saving to a cloud drive is separate from downloading to the device.
 
-## Review and release
+DiPlay Helper is a third-party information and workflow integration. DiPlay releases are maintained by their respective developers; the collected guides and evidence come from diplay.org and its cited original sources. The helper’s software checks do not establish vehicle compatibility.
 
-See [`docs/review.md`](docs/review.md) for behavior review and [`docs/release.md`](docs/release.md) for the staged release procedure. Site-side source files stay in the existing private website repository; the new repository contains only the Skill and MCP integration.
+## Further reading
 
-## 中文说明
+- [Live DiPlay LLM guide](https://diplay.org/llm-guide.md)
+- [Third-party version directory](https://diplay.org/community/?lang=en)
+- [Skill instructions](skills/diplay-helper/SKILL.md)
+- [Development and MCP configuration](docs/development.md)
+- [Review scenarios](docs/review.md) · [Validation record](docs/validation.md) · [Release procedure](docs/release.md)
 
-技能名为 `diplay-helper`，展示名为 **DiPlay Helper**。它解决选包、下载、安装、连接和排错，按用户语言回复，并通过本站 LLM Markdown 获取最新知识；不包含静态资料快照。MCP 是可选的精确查询辅助，查到候选后仍要读对应 Markdown。
-
-当前仓库保持私有，待 owner review 后再决定公开、许可证、部署和目录提交。网站改动也保留在 review 分支，尚未上线。原有 QAgent 专用 `diplay-version-helper` 是已发布接口，这次不改变其线上装配或覆盖已有本地安装。
+Screenshot sources and editable diagrams: [image notes](docs/images/README.md).

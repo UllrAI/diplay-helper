@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="680" viewBox="0 0 1440 680" role="img" aria-labelledby="title desc" lang="zh">
+<title id="title">DiPlay Helper — 工作流程</title>
+<desc id="desc">Skill 读取 diplay.org 的实时 Markdown，结合可选 MCP 查询，给出有来源的选包与排错指引。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="#4162ac" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<style>text{font-family:Arial,'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif;fill:#172b42} .eyebrow{font-size:13px;font-weight:700;letter-spacing:2px;fill:#4162ac} .heading{font-size:34px;font-weight:700} .caption{font-size:12px;font-weight:700;letter-spacing:1px;fill:#62748c} .name{font-size:28px;font-weight:700} .body{font-size:18px;fill:#43566d} .tag{font-size:12px;font-weight:700;fill:#4162ac} .label{font-size:13px;fill:#62748c} .optional{font-size:21px;font-weight:700;fill:#274b8b} .note{font-size:18px;fill:#62748c}</style>
+<rect width="1440" height="680" rx="24" fill="#f3f6fb"/>
+
+<text x="48" y="53" class="eyebrow" >DIPLAY HELPER</text>
+<text x="48" y="104" class="heading" >让整理好的资料，变成下一步指引</text>
+<rect x="40" y="160" width="380" height="248" rx="18" fill="#fff" stroke="#dce4ef"/>
+<text x="70" y="194" class="caption" >01 / 资料来源</text>
+<text x="70" y="239" class="name" >diplay.org</text>
+<text x="70" y="284" class="body" >原作者版本与第三方适配</text>
+<text x="70" y="314" class="body" >兼容性反馈与使用指南</text>
+<text x="70" y="344" class="body" >实时 LLM Markdown</text>
+<rect x="70" y="367" width="180" height="23" rx="7" fill="#edf2fc"/>
+<text x="81" y="383" class="tag" >实时读取</text>
+<rect x="530" y="160" width="380" height="248" rx="18" fill="#fff" stroke="#dce4ef"/>
+<text x="560" y="194" class="caption" >02 / SKILL</text>
+<text x="560" y="239" class="name" >diplay-helper</text>
+<text x="560" y="284" class="body" >按任务读取相关文档</text>
+<text x="560" y="314" class="body" >结合真实设备与证据判断</text>
+<text x="560" y="344" class="body" >按用户语言继续协助</text>
+<rect x="560" y="367" width="180" height="23" rx="7" fill="#edf2fc"/>
+<text x="571" y="383" class="tag" >按需查询</text>
+<rect x="1020" y="160" width="380" height="248" rx="18" fill="#fff" stroke="#dce4ef"/>
+<text x="1050" y="194" class="caption" >03 / 助手回答</text>
+<text x="1050" y="239" class="name" >你的下一步</text>
+<text x="1050" y="284" class="body" >选包理由与准确下载位置</text>
+<text x="1050" y="314" class="body" >安装连接与故障排查</text>
+<text x="1050" y="344" class="body" >附来源，说明适用范围</text>
+<rect x="1050" y="367" width="180" height="23" rx="7" fill="#edf2fc"/>
+<text x="1061" y="383" class="tag" >解决当前问题</text>
+<path d="M420 292 H518" fill="none" stroke="#4162ac" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="475" y="272" class="label" text-anchor="middle">Markdown</text>
+<path d="M910 292 H1008" fill="none" stroke="#4162ac" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="965" y="272" class="label" text-anchor="middle">指引</text>
+<path d="M230 408 V524 H488" fill="none" stroke="#4162ac" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="256" y="506" class="label" >查询目录与实时文档</text>
+<rect x="500" y="470" width="440" height="108" rx="16" fill="#e8effc" stroke="#cddbf5"/>
+<text x="524" y="504" class="optional" >MCP · 可选</text>
+<text x="524" y="535" class="body" >结构化查询 + 实时 Markdown</text>
+<text x="524" y="561" class="label" >包详情 · 兼容性反馈 · 指南</text>
+<path d="M720 470 V420" fill="none" stroke="#4162ac" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="720" y="635" class="note" text-anchor="middle">实时阅读文档 · 保留来源与范围 · 不内置版本资料快照</text>
+</svg>

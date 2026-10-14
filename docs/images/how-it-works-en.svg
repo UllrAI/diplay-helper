@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="680" viewBox="0 0 1440 680" role="img" aria-labelledby="title desc" lang="en">
+<title id="title">DiPlay Helper — information flow</title>
+<desc id="desc">The Skill reads live Markdown from diplay.org, uses optional MCP lookups and provides sourced package and troubleshooting guidance.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="#4162ac" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<style>text{font-family:Arial,'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif;fill:#172b42} .eyebrow{font-size:13px;font-weight:700;letter-spacing:2px;fill:#4162ac} .heading{font-size:34px;font-weight:700} .caption{font-size:12px;font-weight:700;letter-spacing:1px;fill:#62748c} .name{font-size:28px;font-weight:700} .body{font-size:18px;fill:#43566d} .tag{font-size:12px;font-weight:700;fill:#4162ac} .label{font-size:13px;fill:#62748c} .optional{font-size:21px;font-weight:700;fill:#274b8b} .note{font-size:18px;fill:#62748c}</style>
+<rect width="1440" height="680" rx="24" fill="#f3f6fb"/>
+
+<text x="48" y="53" class="eyebrow" >DIPLAY HELPER</text>
+<text x="48" y="104" class="heading" >Collected knowledge. Practical guidance.</text>
+<rect x="40" y="160" width="380" height="248" rx="18" fill="#fff" stroke="#dce4ef"/>
+<text x="70" y="194" class="caption" >01 / INFORMATION SOURCE</text>
+<text x="70" y="239" class="name" >diplay.org</text>
+<text x="70" y="284" class="body" >Original releases &amp; adaptations</text>
+<text x="70" y="314" class="body" >Compatibility reports &amp; guides</text>
+<text x="70" y="344" class="body" >Live LLM Markdown</text>
+<rect x="70" y="367" width="278" height="23" rx="7" fill="#edf2fc"/>
+<text x="81" y="383" class="tag" >READ LIVE</text>
+<rect x="530" y="160" width="380" height="248" rx="18" fill="#fff" stroke="#dce4ef"/>
+<text x="560" y="194" class="caption" >02 / SKILL</text>
+<text x="560" y="239" class="name" >diplay-helper</text>
+<text x="560" y="284" class="body" >Read the relevant documents</text>
+<text x="560" y="314" class="body" >Match the task to the evidence</text>
+<text x="560" y="344" class="body" >Continue in the user’s language</text>
+<rect x="560" y="367" width="278" height="23" rx="7" fill="#edf2fc"/>
+<text x="571" y="383" class="tag" >LOOK UP AS NEEDED</text>
+<rect x="1020" y="160" width="380" height="248" rx="18" fill="#fff" stroke="#dce4ef"/>
+<text x="1050" y="194" class="caption" >03 / ASSISTANT RESPONSE</text>
+<text x="1050" y="239" class="name" >Your next step</text>
+<text x="1050" y="284" class="body" >Package choice and exact links</text>
+<text x="1050" y="314" class="body" >Installation and troubleshooting</text>
+<text x="1050" y="344" class="body" >Reasons, limits and source links</text>
+<rect x="1050" y="367" width="278" height="23" rx="7" fill="#edf2fc"/>
+<text x="1061" y="383" class="tag" >SOLVE THE CURRENT TASK</text>
+<path d="M420 292 H518" fill="none" stroke="#4162ac" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="475" y="272" class="label" text-anchor="middle">Markdown</text>
+<path d="M910 292 H1008" fill="none" stroke="#4162ac" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="965" y="272" class="label" text-anchor="middle">Guidance</text>
+<path d="M230 408 V524 H488" fill="none" stroke="#4162ac" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="256" y="506" class="label" >Catalog + live guides</text>
+<rect x="500" y="470" width="440" height="108" rx="16" fill="#e8effc" stroke="#cddbf5"/>
+<text x="524" y="504" class="optional" >MCP · optional</text>
+<text x="524" y="535" class="body" >Structured lookups + live Markdown</text>
+<text x="524" y="561" class="label" >Packages · compatibility · guides</text>
+<path d="M720 470 V420" fill="none" stroke="#4162ac" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="720" y="635" class="note" text-anchor="middle">Live documents · Source evidence · No bundled release snapshots</text>
+</svg>
